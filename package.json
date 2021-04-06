@@ -1,7 +1,7 @@
 {
-  "name": "breakout-mdn",
+  "name": "breakout-01-difficulty",
   "version": "1.0.0",
-  "description": "https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript",
+  "description": "",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
