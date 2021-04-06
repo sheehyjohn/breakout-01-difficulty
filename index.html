@@ -4,21 +4,79 @@
     <meta charset="utf-8" />
     <title>Gamedev Canvas Workshop - lesson 10: finishing up</title>
     <link rel="stylesheet" href="src/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
   </head>
   <body>
-      <div class="center">
-          <h1>test</h1>
-      
-      </div>
+    <div class="text-center" style="background-color: #dfe4ed;">
+      <h1>Breakout</h1>
+      <p>Change the Numbers Change the Difficulty</p>
+      <p>1. Make Selection 2. Play 3. Press ReFresh</p>
+    </div>
+
     <canvas id="myCanvas" width="480" height="320"></canvas>
-    
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>Paddle Size</h3>
+          <button
+            type="button"
+            onclick="start(175)"
+            class="btn btn-success btn-block"
+          >
+            Big
+          </button>
+          <br /><br />
+          <button
+            type="button"
+            onclick="start(75)"
+            class="btn btn-warning btn-block"
+          >
+            Normal
+          </button>
+          <br /><br />
+          <button
+            type="button"
+            onclick="start(35)"
+            class="btn btn-danger btn-block"
+          >
+            Small
+          </button>
+          <br /><br />
+        </div>
+        <div class="col-sm-4">
+          <h3>Column 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+          <p>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris...
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h3>Column 3</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+          <p>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris...
+          </p>
+        </div>
+      </div>
+    </div>
 
     <div class="center">
-        <h1>test</h1>
-    <button onclick="start()">start<button>
+      <h1>test</h1>
     </div>
 
     <script>
+      var consoleParametersOnce = true;
+
+      var userSettings = {
+        paddleWidth: 10
+      };
+
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
       var ballRadius = 10;
@@ -53,10 +111,15 @@
       document.addEventListener("keyup", keyUpHandler, false);
       document.addEventListener("mousemove", mouseMoveHandler, false);
 
-      function start(){
+      //function start(paddleWidth) {
+      function start(paddleWidthUser) {
+        //console.log("paddleWidth = " + paddleWidth);
+        console.log(paddleWidthUser);
+        paddleWidth = paddleWidthUser;
+
+        //draw(paddleWidth);
         draw();
       }
-
 
       function keyDownHandler(e) {
         if (e.code == "ArrowRight") {
@@ -149,6 +212,17 @@
         ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
       }
 
+      /*
+            function draw(paddle, blocks, lives, speed) {
+              if (consoleParametersOnce == true) {
+                console.log("paddle = " + paddle);
+                console.log("blocks = " + blocks);
+                console.log("lives = " + lives);
+                console.log("speed = " + speed);
+                consoleParametersOnce = false;
+              }
+      */
+
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBricks();
@@ -191,8 +265,6 @@
         y += dy;
         requestAnimationFrame(draw);
       }
-
-     
     </script>
   </body>
 </html>
