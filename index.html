@@ -73,10 +73,6 @@
     <script>
       var consoleParametersOnce = true;
 
-      var userSettings = {
-        paddleWidth: 10
-      };
-
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
       var ballRadius = 10;
@@ -113,7 +109,6 @@
 
       //function start(paddleWidth) {
       function start(paddleWidthUser) {
-        //console.log("paddleWidth = " + paddleWidth);
         console.log(paddleWidthUser);
         paddleWidth = paddleWidthUser;
 
@@ -128,6 +123,7 @@
           leftPressed = true;
         }
       }
+
       function keyUpHandler(e) {
         if (e.code == "ArrowRight") {
           rightPressed = false;
@@ -135,12 +131,14 @@
           leftPressed = false;
         }
       }
+
       function mouseMoveHandler(e) {
         var relativeX = e.clientX - canvas.offsetLeft;
         if (relativeX > 0 && relativeX < canvas.width) {
           paddleX = relativeX - paddleWidth / 2;
         }
       }
+
       function collisionDetection() {
         for (var c = 0; c < brickColumnCount; c++) {
           for (var r = 0; r < brickRowCount; r++) {
@@ -172,6 +170,7 @@
         ctx.fill();
         ctx.closePath();
       }
+
       function drawPaddle() {
         ctx.beginPath();
         ctx.rect(
@@ -211,17 +210,6 @@
         ctx.fillStyle = "#0095DD";
         ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
       }
-
-      /*
-            function draw(paddle, blocks, lives, speed) {
-              if (consoleParametersOnce == true) {
-                console.log("paddle = " + paddle);
-                console.log("blocks = " + blocks);
-                console.log("lives = " + lives);
-                console.log("speed = " + speed);
-                consoleParametersOnce = false;
-              }
-      */
 
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
